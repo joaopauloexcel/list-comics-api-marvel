@@ -5,7 +5,7 @@ export const connection = () => {
     return axios.create({
         baseURL: 'https://gateway.marvel.com',
         params: {
-            "apikey": "yourKeyMarvel",
+            "apikey": "00d252df98c4be9d04ae78b392bde51f",
             "limit": "100"
         },
         timeout: 10000,
