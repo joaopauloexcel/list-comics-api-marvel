@@ -14,20 +14,21 @@ exports.send = (req, res) => {
             <br><br>by: Agile-Home`
           };
 
-        transporter.sendMail(mailOptions, (error, info)=>{
+        transporter.sendMail(mailOptions, (error)=>{
+            console.log("execution sendMail");
             if (error) {
-              console.log(error);
-              res.status(500).send(error);
+              console.log({sendMail: error});
+              res.status(500).send({ message: 'Invalid email, password, or configuration!' });
               return;
             } else {
-              console.log('Email Sent!');
+              console.log({sendMail: 'Email Sent!'});
               res.status(200).send({ message: 'Send with successfully!' });
               return;
             }
         })
 
 	}else{
-		res.status(504).send('Fail -> Email does not exist!');
+		res.status(504).send('Fail -> Body request not sent!');
 		return;
 	}
 }

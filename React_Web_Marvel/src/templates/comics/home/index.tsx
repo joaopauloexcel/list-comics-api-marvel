@@ -17,6 +17,7 @@ interface Props {
 	history: any;
 	comics: any;
 	loadingComics:any;
+	loadingEmail:any;
 	getComics: Function;
 	sendEmail: Function;
 	setTooltip: Function;
@@ -195,7 +196,7 @@ class HomePage extends React.Component<Props, State> {
 
 	render() {
 
-		const {comics, loadingComics, history, setTooltip} = this.props;
+		const {comics, loadingComics, history, setTooltip, loadingEmail} = this.props;
 		const {arraySelectedComics, search} = this.state;
 
 		const filterCountries = (values: Array<any>, value?: string) => {
@@ -218,7 +219,7 @@ class HomePage extends React.Component<Props, State> {
 			<React.Suspense fallback={<CircularProgress />}>
 				<div 
 					data-testid="comics-render" 
-					className={`content ${loadingComics && 'loading'}`}>
+					className={`content ${(loadingComics || loadingEmail.status) && 'loading'}`}>
 
 					{this.renderModal()}
 
@@ -281,6 +282,7 @@ const mapStateToProps = (state: any) => {
 		language: state.global.language,
 		comics: state.comics.comics,
 		loadingComics: state.comics.loadingComics,
+		loadingEmail: state.comics.loadingEmail,
 	};
 };
 

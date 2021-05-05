@@ -5,8 +5,9 @@ import {
     EMAIL_SENT, 
     LOADING_COMICS,
     LOADING_CHARACTERS } from './types';
-import { axiosFetcher } from "../../actions/axiosFetcher";
-import Axios from 'axios';
+import { setTooltip } from "../../actions/tooltip";
+import { axiosProxyMarvel } from '../../connections/marvel';
+import { axiosLocalhost } from '../../connections/localhost';
 
 
 export const getComics = (idComic?:any) => {
@@ -20,7 +21,7 @@ export const getComics = (idComic?:any) => {
             payload: true
         });
 
-        axiosFetcher(`/v1/public/comics${idComicValid}?limit=15`)
+        axiosProxyMarvel().get(`/v1/public/comics${idComicValid}?limit=15`)
             .then((res:any) => {
                 
                 const {results} = res.data.data;
@@ -63,7 +64,7 @@ export const getCharacters = (url?:any) => {
             payload: true
         });
 
-        axiosFetcher(`${urlSplit}`)
+        axiosProxyMarvel().get(`${urlSplit}`)
             .then((res:any) => {
 
                 const {results} = res.data.data;
@@ -101,23 +102,30 @@ export const sendEmail = (body:any) => {
 
         dispatch({
             type: EMAIL_SENT,
-            payload: true
+            payload: {message:"", status:true}
         });
 
-        Axios.post(`http://localhost:3000/apiemail/send`, body)
+        axiosLocalhost().post(`/apiemail/send`, body)
             .then((res:any) => {
+
+                    const {data} = res
+
+                    dispatch(setTooltip({message:data.message, type:"success"}));
 
                     dispatch({
                         type: EMAIL_SENT,
-                        payload: false
+                        payload: {message:data.message, status:false}
                     });
 
             })
             .catch((error) => {
+                const {data} = error.response
 
+                dispatch(setTooltip({message:data.message, type:"error"}));
+                
                 dispatch({
                     type: EMAIL_SENT,
-                    payload: false
+                    payload: {message:data.message, status:false}
                 });
 
             });

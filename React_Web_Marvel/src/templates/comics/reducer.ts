@@ -8,7 +8,7 @@ import {
 const INITIAL_STATE = {
   comics: null,
   characters: null,
-  loadingEmail:false,
+  loadingEmail:{message:"",status:false},
   loadingComics:false,
   loadingCharacters:false,
 };

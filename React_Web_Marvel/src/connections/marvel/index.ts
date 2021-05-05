@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const connection = () => {
+export const axiosProxyMarvel = () => {
         
     return axios.create({
         baseURL: 'https://gateway.marvel.com',
