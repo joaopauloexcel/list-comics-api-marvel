@@ -1,0 +1,42 @@
+.button-default {
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: center;
+    background: rgb(46, 45, 45);
+    color: #FFFFFF;
+    cursor: pointer;
+
+    &.button-primary {
+        background: rgb(46, 45, 45);
+        color: #FFFFFF;
+    }
+
+    &.button-primary:hover {
+        background: rgb(74, 76, 77);
+        color: #FFFFFF;
+    }
+
+    &.button-secundary {
+        background: #FFFFFF;
+        color: #C4C4C4;
+        border: 1px solid #C4C4C4;
+    }
+
+    &.button-secundary:hover {
+        background: rgb(252, 249, 249);
+    }
+
+    &.button-tertiary {
+        color: #fff;
+        border: 1px solid #C4C4C4;
+    }
+
+    &.button-tertiary:hover {
+        color: #929292;
+        border: 1px solid #929292;
+    }
+
+    .button-space-text {
+        margin-left: 10px;
+    }
+}

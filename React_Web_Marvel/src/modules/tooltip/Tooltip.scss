@@ -1,0 +1,48 @@
+@import '../../assets/variables';
+
+.dashboard-tooltip {
+    position: fixed;
+    bottom: 50px;
+    right: 35px;
+    padding: 10px 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    opacity: 0;
+    color: #fff;
+    border-radius: 5px;
+    animation-name: tooltip;
+    animation-duration: 5s;
+    z-index: 3;
+
+    &.success {
+        background-color: $sucess-color;
+    }
+
+    &.error {
+        background-color: red;
+    }
+}
+
+@keyframes tooltip {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    10% {
+        transform: translateY(0);
+    }
+
+    95% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

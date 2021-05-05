@@ -1,0 +1,15 @@
+@import '../../assets/global.scss';
+
+#footer-automatos {
+    background-color: $background-color;
+    color: $secondary-accent-color;
+    text-align: center;
+    padding: 5px 0;
+    font-weight: 200;
+    font-size: 12px;
+
+    a {
+        text-transform: uppercase;
+        color: $secondary-color;
+    }
+}

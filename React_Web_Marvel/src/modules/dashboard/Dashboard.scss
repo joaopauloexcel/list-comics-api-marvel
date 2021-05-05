@@ -1,0 +1,39 @@
+@import '../../assets/variables';
+.container {
+    padding-right: $container-size;
+    padding-left: $container-size;
+    min-height: calc(100vh - 80px);
+    padding-top: 88px;
+
+    .titlePage {
+        font-weight: bold;
+        font-size: 24px;
+        color: $secondary-color;
+        margin-top: 16px;
+    }
+
+    .subTitlePage {
+        font-size: 16px;
+        color: $secondary-color;
+    }
+
+    .bottom-details {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .spacingTitleContaner {
+        margin-bottom: 32px;
+    }
+
+    .scroll {
+        min-height: 100%;
+        overflow: scroll;
+    }
+}
+
+.scroll {
+    min-height: 100%;
+    overflow: scroll;
+}

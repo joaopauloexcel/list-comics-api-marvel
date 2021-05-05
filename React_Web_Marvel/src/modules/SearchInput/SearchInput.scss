@@ -1,0 +1,44 @@
+@import '../../assets/variables';
+
+.search-input {
+    width: 384px;
+    padding-bottom: 18px;
+
+    @media (max-width:880px) {
+        width: 100%;
+    }
+
+    input {
+        width: 100%;
+        display: flex;
+        padding: 2px 4px;
+        box-sizing: border-box;
+        border: 1px solid #a4a4a4;
+        border-radius: 4px;
+        align-items: center;
+        height: 34px;
+        color: $secondary-color;
+    }
+
+    .search-paper {
+        width: 100%;
+        display: flex;
+        padding: 2px 4px;
+        box-sizing: border-box;
+        align-items: center;
+
+        .search-input {
+            margin-left: 16px;
+            flex: 1;
+
+            input {
+                position: relative;
+                top: 20px;
+            }
+        }
+
+        .search-iconButton {
+            padding: 10px;
+        }
+    }
+}

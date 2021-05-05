@@ -1,0 +1,73 @@
+@import '../../assets/global.scss';
+@import '../../assets/variables.scss';
+
+.card-comics {
+    max-height: 483px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    .row-comics {
+        box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.14), 0px 2px 2px rgba(0, 0, 0, 0.12), 0px 1px 3px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 13px;
+        transition: 1s;
+        margin-bottom: 16px;
+        text-align: center;
+        min-height: 86px;
+        border-radius: 4px;
+        width: 100%;
+        justify-content:space-between;
+        background: #fff;
+        opacity: 0.9;
+        padding-top: 0px;
+        align-items: center;
+
+    }
+
+    .row-comics:hover {
+        opacity: 1;
+        transition: 1s;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    a {
+        text-decoration:none;
+
+        .display-title {
+            display: flex;
+            align-items: center;
+
+            .display-img-block {
+                padding: 0 16px;
+                width: 100px;
+
+                img {
+                    width: 98%;
+                    margin-top: 14px;
+                    border-radius: 20%;
+                    border: 1px solid #000;
+                    height: 100px;
+                }
+
+                img:hover {
+                    width: 100%;
+                    border: 1px solid $secondary-color;
+                }
+            }
+
+            .display-title-block {
+                padding: 0 16px;
+                width: 240px;
+                font-size: 16px;
+                color: #a4a4a4;
+            }
+
+            .display-title-block:hover {
+                font-weight: bold;
+            }
+        }
+    }
+
+}
