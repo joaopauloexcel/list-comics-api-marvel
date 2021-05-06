@@ -8,7 +8,7 @@ de cada história, é exibido informações individuais complementares como pers
 
 API - `https://gateway.marvel.com`
 
-DOCUMENTAÇÂO: `https://developer.marvel.com/docs`.
+Documentação: `https://developer.marvel.com/docs`.
 
 ### Funcionalidades extras
 
