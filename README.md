@@ -9,7 +9,7 @@ de cada história, é exibido informações individuais complementares como pers
 API - `https://gateway.marvel.com`
 DOCUMENTAÇÂO: `https://developer.marvel.com/docs`.
 
-### Funcionalidades extra
+### Funcionalidades extras
 
 I- Inclusão de tradução para Inglês, Português e Espanhol.
 II- Inclusão de loading próprio com animation SASS
