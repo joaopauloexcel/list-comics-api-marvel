@@ -7,9 +7,9 @@ Na listagem, é exibido as miniaturas e títulos das histórias clicáveis, onde
 de cada história, é exibido informações individuais complementares como personagens e criadores.
 
 API - `https://gateway.marvel.com`
-DOCUMENTAÇÂO: `https://developer.marvel.com/docs`
+DOCUMENTAÇÂO: `https://developer.marvel.com/docs`.
 
-`Funcionalidades extra`
+### Funcionalidades extra
 
 I- Inclusão de tradução para Inglês, Português e Espanhol.
 II- Inclusão de loading próprio com animation SASS
