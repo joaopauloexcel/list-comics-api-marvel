@@ -194,7 +194,7 @@ class HomePage extends React.Component<Props, State> {
 									sendEmail(
 										{
 											name:"Marvel developer",
-											recept:"joaopauloexcel@hotmail.com",
+											recept:"joaopaulo@hotmail.com",
 											title:"Convite",
 											text:`Ids selecionados: ${arraySelectedComics}`
 										}
