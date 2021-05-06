@@ -11,7 +11,7 @@ const Footer = React.lazy(() => import('../footer'));
 const ComicsPage = React.lazy(() => import('../../templates/comics/index'));
 
 const Dashboard = ({tooltip={}}:any): JSX.Element => {
-	console.log({tooltip})
+
 	return (
 		<React.Suspense fallback={<CircularProgress />}>
 			<Header />
@@ -32,7 +32,7 @@ const Dashboard = ({tooltip={}}:any): JSX.Element => {
 };
 
 const mapStateToProps = (state: any) => {
-	console.log({"dash":state})
+
 	return {
 		tooltip: state.global.tooltip,
 	};

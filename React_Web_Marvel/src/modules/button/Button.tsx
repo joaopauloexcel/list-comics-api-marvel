@@ -2,6 +2,7 @@ import * as React from 'react';
 import './Button.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CircularProgress } from '@material-ui/core';
+import { FormattedMessage } from 'react-intl';
 
 interface Props {
 	obj?: any;
@@ -27,7 +28,7 @@ export const Button = ({
 	return (
 		<React.Suspense fallback={<CircularProgress />}>
 			<div
-				style={{ ...(style || { lineHeight: height, width: width, height, marginRight: "24px" }), ...(disabled && { cursor: 'normal', opacity: '0.5' }) }}
+				style={{ ...(disabled ? {"background":"#c4c4c4"} : style || { lineHeight: height, width: width, height, marginRight: "24px" }), ...(disabled && { cursor: 'normal', opacity: '0.1' }) }}
 				className={`button-default ${obj && obj.type === 'tertiary'
 						? 'button-tertiary'
 						: obj && obj.type === 'secundary'
@@ -51,7 +52,7 @@ export const Button = ({
 								{obj.text}
 							</span>
 						) : obj.text ? (
-							obj.text
+							<FormattedMessage id={obj.text}/>
 						) : (
 							''
 						)}

@@ -4,7 +4,7 @@ const tp={}
 
 tp.email=credential.email
 tp.transporter = nodemailer.createTransport({
-	host: "smtp.live.com",
+	host: credential.host,
 	port: 25,
 	secure: false, // true for 465, false for other ports
 	auth: {

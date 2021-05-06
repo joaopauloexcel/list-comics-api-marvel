@@ -21,13 +21,13 @@ export const getComics = (idComic?:any) => {
             payload: true
         });
 
-        axiosProxyMarvel().get(`/v1/public/comics${idComicValid}?limit=15`)
+        axiosProxyMarvel().get(`/v1/public/comics${idComicValid}?limit=50`)
             .then((res:any) => {
                 
                 const {results} = res.data.data;
-                console.log("loadingComics", {results})
+
                 if (res.status === 200 && results.length >= 1) {
-                    console.log("loadingComics entrou", results)
+
                     dispatch({
                         type: COMICS_RESULTS,
                         payload: results
@@ -70,20 +70,23 @@ export const getCharacters = (url?:any) => {
                 const {results} = res.data.data;
 
                 if (res.status === 200 && results.length >= 1) {
-                    console.log("entrou getCharacters", results)
+
                     dispatch({
                         type: COMICS_CHARACTERS,
                         payload: results
                     });
+                    
                     dispatch({
                         type: LOADING_CHARACTERS,
                         payload: false
                     });
                 }
+
                 else dispatch({
                     type: LOADING_CHARACTERS,
                     payload: false
                 });
+
             })
             .catch(() => {
 

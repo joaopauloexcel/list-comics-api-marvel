@@ -33,7 +33,7 @@ export default (state:any = {...INITIAL_STATE}, action:any) => {
         loadingEmail: action.payload,
       };
 
-    case LOADING_COMICS: console.log({"loadingComics":action.payload})
+    case LOADING_COMICS:
       return {
         ...state,
         loadingComics: action.payload,

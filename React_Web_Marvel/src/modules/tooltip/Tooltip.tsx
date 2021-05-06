@@ -5,22 +5,22 @@ import {FormattedMessage} from 'react-intl';
 import './Tooltip.scss'; 
 
 interface Props {
-	setTooltip?: Function;
+	setTooltip: Function;
 	tooltip?: any;
 }
 
 class Tooltip extends Component<Props> {
 
 	constructor(props: Props) {
-
 		super(props);
+		this.state = {};
 
 	}
 
     componentWillMount () {
 
-		console.log("Entrou toltip");
-		// const {setTooltip} = this.props;
+		const {setTooltip} = this.props;
+
         setTimeout(() => setTooltip({"message": "teste", "type": "error"}), 5000);
 
     }
@@ -28,7 +28,7 @@ class Tooltip extends Component<Props> {
     render () {
 
         const {tooltip} = this.props;
-		console.log({"tooltiptip":tooltip})
+
         return (
             <div className={`dashboard-tooltip ${tooltip.type}`}>
                 <FormattedMessage id={tooltip.message} />

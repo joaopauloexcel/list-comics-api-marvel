@@ -15,7 +15,7 @@ export default (state: any = {...INITIAL_STATE}, action: any) => {
             return { ...state, language: action.payload };
 
             
-        case SET_TOOLTIP: console.log("entrou no redux", SET_TOOLTIP, action)
+        case SET_TOOLTIP:
             return {...state, tooltip: action.payload};
             
 

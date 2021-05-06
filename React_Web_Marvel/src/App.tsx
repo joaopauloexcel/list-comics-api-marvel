@@ -5,6 +5,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import history from './history';
 import * as locale from './locale';
 import './App.scss';
+import { connect } from 'react-redux';
 
 const localeData: any = {
 	'pt-BR': locale.ptBR,
@@ -46,4 +47,11 @@ class AppComponent extends Component<AppProps, AppState> {
 	}
 }
 
-export default AppComponent;
+const mapStateToProps = (state: any) => {
+	return {
+		language: state.global.language,
+	};
+};
+
+
+export default connect(mapStateToProps)(AppComponent);;

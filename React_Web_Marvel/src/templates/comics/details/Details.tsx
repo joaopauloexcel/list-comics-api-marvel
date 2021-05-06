@@ -7,6 +7,7 @@ import { useParams } from 'react-router';
 import { getComics, getCharacters } from '../actions';
 import Button from '../../../modules/button';
 import CardComics from '../../../modules/cardComics';
+import { FormattedMessage } from 'react-intl';
 
 
 interface Props {
@@ -18,12 +19,6 @@ interface Props {
 const Details = ({ history, comics=[], loadingCharacters=false, characters=[], getComics, getCharacters }: any): any => {
 
 	const { id }: any = useParams() || '';
-	// const [resultDetail, setResult] = useState(comics);
-	/* const { loading, data } = useGetCountry(name);
-	const classes = useStyles();
-	const [isEdit, setIsEdit] = useState(false);
-	const [result, setResult] = useState(!!data ? data.Country[0] : {}); */
-
 
 	useEffect(() => {
 
@@ -43,12 +38,12 @@ const Details = ({ history, comics=[], loadingCharacters=false, characters=[], g
 			<div className={`countries-details ${loadingCharacters && 'loading'}`}>
 
 				<div className={`titlePage`}>
-					Detalhes 
+					<FormattedMessage id={"details"}/> 
 				</div>
 				<div className={`details-button`}>
 					<div className={`button-container`}>
 						<Button
-							obj={{ text: 'Voltar', type: 'tertiary' }}
+							obj={{ text: 'to-back', type: 'tertiary' }}
 							style={{ lineHeight: '36px' }}
 							onClick={() => history.goBack()}
 						/>
@@ -63,7 +58,7 @@ const Details = ({ history, comics=[], loadingCharacters=false, characters=[], g
 					<div className={"bottom-details"}>
 						{characters && characters.length > 0 &&
 							<div className={`titlePage`}>
-								Personagens 
+								<FormattedMessage id={"characters"}/>  
 								{characters.map((item:any, index:any) => 
 									<div className={`subTitlePage`} key={index}>
 										{index + 1}: {item.name} 									
@@ -73,7 +68,7 @@ const Details = ({ history, comics=[], loadingCharacters=false, characters=[], g
 
 						{comics && comics.length > 0 && comics[0].creators.items.length > 0 &&
 							<div className={`titlePage`}>
-								Criadores 
+								<FormattedMessage id={"creators"}/>  
 								{comics[0].creators.items.map((item:any, index:any) => 
 									<div className={`subTitlePage`} key={index}>
 										{index + 1}: {item.name} - {item.role.toUpperCase()}							

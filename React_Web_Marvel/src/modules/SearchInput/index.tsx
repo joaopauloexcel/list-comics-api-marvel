@@ -1,10 +1,5 @@
 import React from 'react';
 import './SearchInput.scss';
-import Paper from '@material-ui/core/Paper';
-import InputBase from '@material-ui/core/InputBase';
-import IconButton from '@material-ui/core/IconButton';
-
-import SearchIcon from '@material-ui/icons/Search';
 
 
 interface SearchInputProps {
@@ -22,7 +17,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ onChange = () => {}, search }
         onChange={(event) => onChange(event.target.value)}
         type={"text"}
         value={search}
-        placeholder="Search..."
+        placeholder={"Search..."}
       />
     </div>
   );

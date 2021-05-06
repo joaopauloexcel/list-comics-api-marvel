@@ -1,29 +1,42 @@
 import * as React from 'react';
 import { CircularProgress } from '@material-ui/core';
 import './Header.scss';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl'; 
 import { setLocale } from '../../actions/locale';
+import { connect } from 'react-redux';
+import ImageBrazil from '../../assets/image/brazil.png';
+import ImageEspanish from '../../assets/image/espanish.png';
+import ImageEnglish from '../../assets/image/usa.png';
 
-
-export const Header = (): JSX.Element => {
+const Header = ({setLocale}:any): JSX.Element => {
 	return (
 		<React.Suspense fallback={<CircularProgress />}>
 			<div data-testid="header-render" className={"header-body"}>
-				{/* <FormattedMessage
-						id="app-current-language"
-						defaultMessage="app-current-language"
-						values={{
-							appLocale: (
-								<FormattedMessage id="app-locale" defaultMessage="app-locale" />
-							),
-						}}
-					/>
-					<br />
-					<button onClick={() => setLocale('pt-BR')}>pt-BR</button>
-					<button onClick={() => setLocale('en-US')}>en-US</button>
-					<button onClick={() => setLocale('es-ES')}>es-ES</button> */}
+				<div className={"header-body-language"}>
+					<div className={"brazil"} onClick={() => setLocale('pt-BR')}>
+						<img src={ImageBrazil}/>
+					</div>
+					<div className={"english"} onClick={() => setLocale('en-US')}>
+						<img src={ImageEnglish}/>
+					</div>
+					<div className={"espanish"} onClick={() => setLocale('es-ES')}>
+						<img src={ImageEspanish}/>
+					</div>
+				</div>
 			</div>
 		</React.Suspense>
 	);
 };
 
+const mapStateToProps = (state: any) => {
+
+	return {
+		language: state.global.language,
+	};
+};
+
+const mapDispatchToProps = (dispatch:any) => ({ 
+	"setLocale": (params:any) => dispatch(setLocale(params)),
+ });
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

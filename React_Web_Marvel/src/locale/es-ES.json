@@ -1,4 +1,13 @@
 {
 	"app-locale": "Español",
-	"app-current-language": "Idioma Atual: {appLocale}"
+	"app-current-language": "Idioma Atual: {appLocale}",
+	"selected": "Seleccionado",
+	"send-email": "Enviar correo electrónico",
+	"send": "Enviar",
+	"search": "Buscar",
+	"details": "Detalles",
+	"to-back": "Atrás",
+	"characters": "Personajes",
+	"creators": "Creadores",
+	"send-modal-comics": "¡Envío de enlaces a los cómics seleccionados por correo electrónico!"
 }

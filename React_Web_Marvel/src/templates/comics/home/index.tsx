@@ -2,15 +2,16 @@ import * as React from 'react';
 import { CircularProgress } from '@material-ui/core';
 import '../sass/Comics.scss';
 import { connect } from 'react-redux';
-import { injectIntl } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import CardComics  from "../../../modules/cardComics";
 import { getComics } from '../actions';
 import { sendEmail } from '../actions';
 import Button from '../../../modules/button';
-import SearchInput from '../../../modules/SearchInput';
+import SearchInput from '../../../modules/searchInput';
 import { COMICS_DETAILS } from '../../../routers';
 import Modal from '@material-ui/core/Modal';
 import {setTooltip} from '../../../actions/tooltip';
+import { setLocale } from '../../../actions/locale';
 
 
 interface Props {
@@ -21,6 +22,7 @@ interface Props {
 	getComics: Function;
 	sendEmail: Function;
 	setTooltip: Function;
+	setLocale: Function;
 }
 
 interface State {}
@@ -38,6 +40,7 @@ class HomePage extends React.Component<Props, State> {
 			openModal:false,
 			emailProfile:"",
 			emailTitle:"",
+			disabledButton:""
 		};
 
 		this.setArraySelectedComics = this.setArraySelectedComics.bind(this);
@@ -45,6 +48,7 @@ class HomePage extends React.Component<Props, State> {
 		this.renderModal = this.renderModal.bind(this);
 		this.controlModal = this.controlModal.bind(this);
 		this.onChange = this.onChange.bind(this);
+		this.IsEmail = this.IsEmail.bind(this);
 
 	}
 
@@ -124,7 +128,17 @@ class HomePage extends React.Component<Props, State> {
 	controlModal () {
 
 		const {openModal} = this.state;
-		this.setState({openModal:!openModal}, () => console.log({"modal":this.state.openModal}))
+		this.setState({openModal:!openModal})
+
+	}
+
+	IsEmail (email:any) {
+
+		const check = "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/";
+
+		if (email.search(check) === -1) return this.setState({disabledButton:false})
+
+		return this.setState({disabledButton:true})
 
 	}
 
@@ -133,7 +147,8 @@ class HomePage extends React.Component<Props, State> {
 		const {openModal, 
 			emailProfile,
 			emailTitle,
-			arraySelectedComics} = this.state;
+			arraySelectedComics,
+			disabledButton} = this.state;
 		
 		const {sendEmail} = this.props;
 
@@ -147,7 +162,7 @@ class HomePage extends React.Component<Props, State> {
 					<div className={"modal-container"}>
 
 						<div className={"modal-title"}>
-							Envio dos links dos quadrinhos selecionados por e-mail!
+							<FormattedMessage id={"send-modal-comics"}/>
 						</div>
 
 						<div className={"modal-input"}>
@@ -172,7 +187,8 @@ class HomePage extends React.Component<Props, State> {
 
 						<div className={"modal-button"}>
 						<Button 
-							obj={{text:"Enviar"}} 
+							disabled={disabledButton}
+							obj={{text:"send"}} 
 							onClick={() => 
 								this.setState({openModal:false}, () => {
 									sendEmail(
@@ -224,9 +240,11 @@ class HomePage extends React.Component<Props, State> {
 					{this.renderModal()}
 
 					<div className="header-home">
+
 						<div className="selected-home">
-							Selecionados ({arraySelectedComics.length})
+							<FormattedMessage id={"selected"}/> ({arraySelectedComics.length})
 						</div>
+
 						<div className="email-home">
 							<div 
 								data-testid={"button-email-test"} 
@@ -236,7 +254,7 @@ class HomePage extends React.Component<Props, State> {
 									: setTooltip({"message": "Selecione ao menos 1 registro", "type": "error"})
 								}
 							>
-									Enviar E-mail
+									<FormattedMessage id={"send-email"}/>
 							</div>
 						</div>
 
@@ -262,7 +280,7 @@ class HomePage extends React.Component<Props, State> {
 								checkOnClickAction={this.setArraySelectedComics}
 								actionComponent={
 									({item}:any) =>
-										<Button obj={{text:"Detalhes"}} onClick={() => history.push(`${COMICS_DETAILS}/${item.id}`)}/>
+										<Button obj={{text:"details"}} onClick={() => history.push(`${COMICS_DETAILS}/${item.id}`)}/>
 								}
 							/>
 						}
@@ -277,7 +295,7 @@ class HomePage extends React.Component<Props, State> {
 }
 
 const mapStateToProps = (state: any) => {
-	console.log({state})
+
 	return {
 		language: state.global.language,
 		comics: state.comics.comics,
@@ -290,6 +308,7 @@ const mapDispatchToProps = (dispatch:any) => ({
 	"getComics": () => dispatch(getComics()),
 	"sendEmail": (params:any) => dispatch(sendEmail(params)),
 	"setTooltip": (params:any) => dispatch(setTooltip(params)),
+	"setLocale": (params:any) => dispatch(setLocale(params)),
  });
  // const mapDispatchToProps = {getComics, sendEmail, setTooltip}
 

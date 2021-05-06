@@ -1,5 +1,6 @@
 @import '../../assets/global.scss';
 @import '../../assets/variables.scss';
+
 .header-body {
     margin-bottom: 64px;
     background-color: $background-primary;
@@ -7,4 +8,55 @@
     width: 100%;
     height: 32px;
     z-index: 1;
+
+    .header-body-language {
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        position: absolute;
+        right: 20px;
+        cursor: pointer;
+
+        .brazil {
+            width: 34px;
+
+            img {
+                width: 34px;
+                opacity: 0.9;
+            }
+
+            img:hover {
+                width: 36px;
+                opacity: 1;
+            }
+        }
+
+        .espanish {
+            width: 36px;
+
+            img {
+                width: 36px;
+                opacity: 0.9;
+            }
+
+            img:hover {
+                width: 37px;
+                opacity: 1;
+            }
+        }
+    }
+
+    .english {
+        width: 35px;
+
+        img {
+            width: 35px;
+            opacity: 0.9;
+        }
+
+        img:hover {
+            width: 36px;
+            opacity: 1;
+        }
+    }
 }
