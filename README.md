@@ -12,8 +12,10 @@ DOCUMENTAÇÂO: `https://developer.marvel.com/docs`.
 ### Funcionalidades extras
 
 I- Inclusão de tradução para Inglês, Português e Espanhol.
-II- Inclusão de loading próprio com animation SASS
-III- Inclusão de Tooltip com animation SASS
+
+II- Inclusão de loading próprio com animation SASS.
+
+III- Inclusão de Tooltip com animation SASS.
 
 No diretório do projeto React, você pode executar:
 
