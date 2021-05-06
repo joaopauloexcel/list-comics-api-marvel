@@ -1,4 +1,4 @@
-# Funcionamento
+# Listagem de Histórias em Quadrinhos
 
 ## Aplicação React
 
